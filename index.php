@@ -4,7 +4,7 @@ include('dbconfig-mysql.php');
 
 $DBconnection = OpenCon();
 
-function sanitize($string)
+function sanitize(string $string)
 {
     return filter_var(trim($string), FILTER_SANITIZE_STRING);
 }
@@ -14,7 +14,7 @@ function serverError()
     echo "this request won't work";
 }
 
-function getContacts($DBconnection)
+function getContacts(mysqli $DBconnection)
 {
     try {
 
@@ -44,12 +44,20 @@ function getContacts($DBconnection)
     }
 }
 
-function postContacts(){
-    echo "posted!";
+function postContacts(/*mysqli $DBconnection*/){
+    $body = file_get_contents("php://input");
+    $data = json_decode($body, true);
+    $name = sanitize($data['name']);
+    $phone = sanitize($data['phone']);
+    echo $name . " " . $phone . " posted";
 }
 
 function updateContacts(){
-    echo "updated!";
+    $body = file_get_contents("php://input");
+    $data = json_decode($body, true);
+    $name = $data['name'];
+    $phone = $data['phone'];
+    echo $name . " " . $phone . " updated";
 }
 
 function deleteContact(){
