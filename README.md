@@ -27,4 +27,4 @@ raw php rest api with mysql, for now without any structure defined.
     "id": "[integer]"
 }
 ```
-
+ - `DELETE /id/{id}` : Delete 1 contact with matching id parameter
