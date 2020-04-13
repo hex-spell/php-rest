@@ -1,5 +1,5 @@
 # php-rest
-raw php rest api with mysql, for now without any structure defined.
+raw php rest api with mysql
 ## endpoints
 
  - `GET /` : Get 10 contacts
